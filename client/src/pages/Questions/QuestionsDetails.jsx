@@ -77,7 +77,7 @@ const QuestionsDetails = () => {
      const Navigate = useNavigate()
      const dispatch = useDispatch()
      const location = useLocation()
-     const url = 'http://localhost:3000'
+     const url = 'https://stackover-flow-nx79.onrender.com'
      //console.log(location)
     const User = useSelector((state) => (state.currentUserReducer))
 
