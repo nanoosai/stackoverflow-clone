@@ -21,16 +21,17 @@ const Navbar = () => {
   }
   
 
-   useEffect(() =>{
+   useEffect(() => {
     const token = User?.token
     if(token){
-      const decodedToken = decode(token)
+      const decodedToken = decode(token);
       if(decodedToken.exp * 1000 < new Date().getTime()){
-        handleLogout();
+        //handleLogout();
       }
     }
     dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile'))));
-   }, [User?.token, dispatch]);
+    
+    }, [User?.token, dispatch]);
 
   return (
     <nav className="main-nav">
@@ -49,7 +50,9 @@ const Navbar = () => {
           <Link to ='/Auth' className="nav-item nav-links">Log in</Link>:  
           <div>
           <Avatar backgroundColor= '#009dff' px='4px' py='4px' borderRadius='50%' color='white'><Link to = {`/Users/${User?.result?._id}`} style={{color:'white',textDecoration:"none"}}>{User.result.name.charAt(0).toUpperCase()}</Link></Avatar>
-          <button className="nav-item nav-links" onClick={handleLogout}>Log out</button>
+          <button className="nav-item nav-links" onClick={handleLogout}>
+	  Log out
+	  </button>
           </div>
         }
       </div>
